@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-gradient: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.20), transparent 20%), radial-gradient(circle at 90% 10%, rgba(16, 185, 129, 0.20), transparent 20%), linear-gradient(180deg, #0b1224 0%, #0f172a 100%);
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: 1px solid rgba(255, 255, 255, 0.18);
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --accent: #6366f1;
+    --accent-strong: #a855f7;
+    --surface: #0f172a;
+    --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.35);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.25);
+    --radius: 14px;
+    --transition: 0.35s ease;
+    --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    line-height: 1.6;
+    color: var(--text-main);
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(14px);
+    border-bottom: var(--card-border);
+    padding: 1.2rem 2rem;
+    box-shadow: var(--shadow-soft);
+}
+
+header h1 {
+    margin-bottom: 0.6rem;
+    font-size: 1.85rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+main {
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+}
+
+.news-section h2 {
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.news-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: var(--radius);
+    padding: 0;
+    box-shadow: var(--shadow-strong);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.news-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 70px rgba(99, 102, 241, 0.25);
+    border-color: rgba(99, 102, 241, 0.45);
+}
+
+.news-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.08);
+}
+
+.news-card > h2,
+.news-card > .news-meta,
+.news-card > .news-announce,
+.news-card > .read-more-btn {
+    padding: 0 1.4rem;
+}
+
+.news-card > .read-more-btn {
+    margin: 1.1rem 1.4rem 1.4rem 1.4rem;
+}
+
+.news-card h2 {
+    font-size: 1.3rem;
+    margin: 1.4rem 0 0.6rem 0;
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+.news-meta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    align-items: center;
+}
+
+.news-date {
+    font-weight: 600;
+    color: #cbd5e1;
+}
+
+.news-category {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.news-announce {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e5e7eb;
+    line-height: 1.75;
+    animation: fadeIn 0.35s ease;
+}
+
+.news-announce.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.read-more-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+.read-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.35);
+    filter: brightness(1.02);
+}
+
+aside {
+    max-width: 1200px;
+    margin: 0 auto 2.5rem auto;
+    padding: 1.6rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+aside h2 {
+    margin-bottom: 1rem;
+    color: #e0e7ff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.popular-news {
+    padding-left: 1.2rem;
+    color: var(--text-main);
+}
+
+.popular-news li {
+    margin-bottom: 0.7rem;
+}
+
+.popular-news a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color var(--transition), transform var(--transition);
+}
+
+.popular-news a:hover {
+    color: #a5b4fc;
+    transform: translateX(2px);
+}
+
+footer {
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #a5b4fc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 968px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    main {
+        padding: 0 1rem;
+    }
+}
+
